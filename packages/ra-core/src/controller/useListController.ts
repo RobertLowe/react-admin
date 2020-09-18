@@ -183,8 +183,8 @@ const useListController = <RecordType = Record>(
     const finalIds = typeof total === 'undefined' ? defaultIds : ids;
 
     const totalPages = useMemo(() => {
-        return Math.ceil(total / query.perPage) || 1;
-    }, [query.perPage, total]);
+        return Math.ceil((typeof total === 'undefined' ? defaultTotal : total) / query.perPage) || 1;
+    }, [query.perPage, (typeof total === 'undefined' ? defaultTotal : total));
 
     useEffect(() => {
         if (
